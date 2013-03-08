@@ -1,8 +1,10 @@
 require_relative '../../db/config'
 require 'date'
+require 'faker'
 
 class Student < ActiveRecord::Base
-  include ActiveModel::Validations
+  has_one :teacher
+
   validates :email, :format => { :with => /^([0-9a-zA-Z]([-\.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/, 
                                  :message => "Not valid e-mail" }
   validates :email, :uniqueness => true
@@ -30,3 +32,20 @@ class Student < ActiveRecord::Base
                                        (now.month == birthday.month && now.day >= birthday.day)) ? 0 : 1)
   end
 end
+
+
+
+
+# 100.times do Student.create(  :first_name => Faker::Name.first_name,
+#                               :last_name => Faker::Name.last_name,
+#                               :phone => '412-345-6789', 
+#                               :email => Faker::Internet.email,
+#                               :birthday => Date.new(1989,9,24),
+#                               :gender => 'male',
+#                               :teacher_id => rand(1..10)
+#                               )
+# end
+
+# p Student.where('first_name = ?', 'Augustus')
+
+p Student.where('teacher_id = ?', 4)
