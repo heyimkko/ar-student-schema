@@ -51,13 +51,27 @@ end
 
 # p Student.where('teacher_id = ?', 4)
 
-p Student.where('id = ?', 12)
+# student = Student.all.first
+#     student.name = "John Doe"
+#     student.first_name = "John"
+#     student.last_name = "Doe"
+#     p student.name
+#     student.email = "TEST@TESTLOL.com"
+#     p student
+#     student.save!
+#     p "2"
+#     p student
 
+#     student = Student.find(student.id)
+#     p "3"
+#     p student
+#     p student.email
+#     p student.name
 
-select * from teachers
-join students_teachers
-on teachers.id = students_teachers.teacher_id
-join students
-on students_teachers.student_id = students.id
-where teachers.id = 1;
+# select * from teachers
+# join students_teachers
+# on teachers.id = students_teachers.teacher_id
+# join students
+# on students_teachers.student_id = students.id
+# where teachers.id = 1;
 

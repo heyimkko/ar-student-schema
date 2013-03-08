@@ -7,8 +7,10 @@ class CreateStudents < ActiveRecord::Migration
     # HINT: checkout ActiveRecord::Migration.create_table
     create_table :students do |t|
       t.integer :id
+      t.string  :name
       t.string  :first_name
       t.string  :last_name
+      t.string  :address
       t.string  :gender
       t.date    :birthday
       t.string  :email

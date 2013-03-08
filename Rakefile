@@ -33,6 +33,14 @@ task "db:version" do
   puts "Current version: #{ActiveRecord::Migrator.current_version}"
 end
 
+desc 'Concatenate first and last names'
+task "db:concatenate_names" do
+  # Student.all.each do |student|
+  #   student.name = student.first_name + " " + student.last_name
+  #   student.save
+  # end
+end
+
 desc "Run the specs"
 RSpec::Core::RakeTask.new(:specs)
 
