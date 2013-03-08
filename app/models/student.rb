@@ -3,7 +3,8 @@ require 'date'
 require 'faker'
 
 class Student < ActiveRecord::Base
-  has_one :teacher
+  has_many :students_teachers
+  has_many :teachers, :through => :students_teachers
 
   validates :email, :format => { :with => /^([0-9a-zA-Z]([-\.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/, 
                                  :message => "Not valid e-mail" }
@@ -48,4 +49,15 @@ end
 
 # p Student.where('first_name = ?', 'Augustus')
 
-p Student.where('teacher_id = ?', 4)
+# p Student.where('teacher_id = ?', 4)
+
+p Student.where('id = ?', 12)
+
+
+select * from teachers
+join students_teachers
+on teachers.id = students_teachers.teacher_id
+join students
+on students_teachers.student_id = students.id
+where teachers.id = 1;
+
